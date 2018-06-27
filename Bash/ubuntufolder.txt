@@ -1,0 +1,7 @@
+
+#!/bin/bash
+echo What folder C/N/Y ?
+read folder
+cd /mnt/$folder
+exec bash
+
