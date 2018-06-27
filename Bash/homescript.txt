@@ -1,0 +1,12 @@
+#!/bin/bash
+while true; do
+for i in 10 9 8 7 6 5 4 3 2 1
+do
+        echo "Time till homestead reload: $i";
+        sleep 1m
+
+done
+echo "Reseting Homestead";
+vagrant reload
+clear
+done

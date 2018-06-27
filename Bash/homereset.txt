@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /n/Homestead
+sh homescript
+echo "Homestead Reset is running!"

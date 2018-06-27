@@ -1,0 +1,17 @@
+#!/bin/sh
+NM = $1 PATH =$2
+#PATH for the files
+#N-M Two number separated by '-'
+
+N=$(echo $NM | awk -F "-" '{print $1}') # 2-7 Breaks the words by the symbol '-' and print $1 (2) in $NM(2-7)
+
+M=$(echo $NM | awk -F "-" '{print $2}') # Same as $N Gets number 7
+
+filelist =$(ls -l "$2 or $PATH" | awk '{print $9}' | awk -F "/" '{print $5}')
+#Gets Ls from "PATH" Fulling we need 9th line and only files names.
+(Prints ls 9 line then cuts 5th line without the path that we dont need.)
+
+proc=$(cat "$PATH" | tail +2 | awk '{if($N >= $4 && $4 <= $M){print $} }')
+
+fi
+done
