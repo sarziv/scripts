@@ -1,0 +1,41 @@
+!#/bin/sh
+clear
+echo Lab2 Uzduotis su SSH prisijungimais perdaryta ir patobulinta.
+echo P1 - Failas, P2 - NM
+sleep 2
+echo 0 Dalis - Parametu testavimas
+if [ $# -ne 2 ];
+then
+echo Reikalingi 2 paramentai
+exit 255
+fi
+if [ -f $1 ];
+then
+        echo Parametrai tvarkingi.
+        echo '\033[01;32m0 Dalis baigta.\033[00m'
+        sleep 3
+else
+        echo P1 nera failas.
+exit 255
+        fi
+echo 1 Dalis - Lauztis bandytis IP sarasas
+        cat "$1" | grep "Failed" | awk -F "from" '{print $2}' | awk -F " " '{print $1}' | sort | uniq -c | sort -n | awk '{print $1 " " $2}'
+echo '\033[01;32m1 Dalis baigta.\033[00m'
+        sleep 3
+echo 2 Dalis - Duomenys
+echo 2.1 Dalis - N ir M
+N=$(echo $2 | awk -F "-" '{print $1}')
+M=$(echo $2 | awk -F "-" '{print $2}')
+echo Nuo "$N" iki "$M"
+sleep 3
+echo 2.2 Dalis IP Duomenys nuo N iki M
+        list=$(cat "$1" | grep "Failed" | awk -F "from" '{print $2}' |
+        awk -F " " '{print $1}' | sort | uniq -c | sort -n |
+        awk '{if($N >= $1 && $1 <= $M) {print $2}}')
+echo $list
+echo '\033[01;32m2 Dalis baigta.\033[00m'
+        sleep 3
+echo 3 Dalis - Prijungti IP is Lauzimosi saraso
+cat "$1" | grep "$list" | grep "user"
+echo '\033[01;32m3 Dalis baigta.\033[00m'
+echo '\033[01;32mCompleted.\033[00m'

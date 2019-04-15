@@ -1,0 +1,12 @@
+ld2t-data ascii text files.
+Format:
+sarziv@os:~/ld2t/ld2t-data$ cat data-1458425449
+     UID   PID  PPID  PGID   SID   C    STIME TTY         TIME CMD
+    root     0     0     0     0   0   Feb 20 ?           0:02 sched
+
+1.Find all specified user, commands.
+2.Find all PID, commands.
+3.Only specified files. from data-1458*
+4.Count all "TIME".
+5.Find most used command CMD.
+6.Most used server TTY.
